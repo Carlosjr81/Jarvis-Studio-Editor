@@ -3,8 +3,10 @@
 Este diretório adiciona uma rota de síntese VoxCPM2 à branch de recuperação.
 Não modifica o editor publicado, o Fake Call nem o relay Render.
 Os dez testes e a importação do VoxCPM passaram na execução 39471312713.
-O titular informou o cadastro do secret. Síntese solicitada em 2026-10-20;
-a disponibilidade da referência e o resultado ainda serão verificados.
+A execução 39472323151 concluiu a síntese em 2026-10-20, usando a referência
+privada cadastrada pelo titular: WAV mono PCM16, 48000 Hz, 19,24 segundos.
+A saída passou nas verificações de duração e presença de áudio.
+A semelhança vocal e a fidelidade do texto ainda precisam ser ouvidas.
 Só um WAV gerado, ouvido e aprovado confirma o resultado.
 
 ## Referência privada
@@ -72,3 +74,20 @@ o snapshot, informe --model-revision <SHA registrado>.
 Fontes:
 https://github.com/OpenBMB/VoxCPM
 https://docs.github.com/en/actions/reference/runners/github-hosted-runners
+
+## Execução comprovada e continuidade da montagem
+
+- Execução: https://github.com/Carlosjr81/Jarvis-Studio-Editor/actions/runs/39472323151
+- Artefato (retenção de 24 horas): https://github.com/Carlosjr81/Jarvis-Studio-Editor/actions/runs/39472323151/artifacts/12288806792
+- Pesos fixados no snapshot: 32279effe8c19989596f05d353d1447f51d9e915
+- O secret é persistente no repositório; a referência não está nos commits.
+- O fluxo está nesta branch de recuperação, ainda em PR rascunho.
+
+MoneyPrinterTurbo aceita narração externa. Depois de ouvir o WAV, use o
+argumento --custom-audio-file com seu caminho real em cada execução: esse
+caminho não é persistido pela WebUI. O áudio precisa existir antes da montagem.
+Não substituir ausência de WAV por uma voz padrão.
+
+Compatibilidade conferida no README-en.md e app/services/task.py do commit
+90f77011d7e3b46d382e6d0180dabfb6725ffee4 do MoneyPrinterTurbo.
+O manual é guia de instalação/montagem; não contém backup do perfil vocal.
