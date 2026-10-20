@@ -1,4 +1,4 @@
-name: Jarvis - Validar motor de voz
+name: Jarvis - Voz Carlos Jr
 on:
   push:
     branches: [codex/restore-local-voice-20261020]
@@ -14,7 +14,7 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -33,3 +33,46 @@ jobs:
           python -m pip install -c voice/constraints.txt 'voxcpm @ git+https://github.com/OpenBMB/VoxCPM.git@cce58a5b59303c9bd63d12f23afe6a49a4a80c59'
           python -m pip check
           python -c "from voxcpm import VoxCPM; import torch; print('VoxCPM import OK; torch', torch.__version__)"
+      - name: Check authorized private voice reference
+        id: reference
+        if: github.event_name != 'pull_request' && github.repository_owner == 'Carlosjr81'
+        env:
+          CARLOS_VOICE_REFERENCE_URL: ${{ secrets.CARLOS_VOICE_REFERENCE_URL }}
+        run: |
+          if [ -n "$CARLOS_VOICE_REFERENCE_URL" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "### Referência pendente" >> "$GITHUB_STEP_SUMMARY"
+            echo "Configure CARLOS_VOICE_REFERENCE_URL. Nenhuma voz foi gerada." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Install audio decoder
+        if: steps.reference.outputs.ready == 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg libsndfile1
+      - name: Generate with Carlos Jr authorized reference
+        if: steps.reference.outputs.ready == 'true'
+        env:
+          CARLOS_VOICE_REFERENCE_URL: ${{ secrets.CARLOS_VOICE_REFERENCE_URL }}
+          OMP_NUM_THREADS: '4'
+          MKL_NUM_THREADS: '4'
+          HF_HUB_DISABLE_TELEMETRY: '1'
+        run: |
+          python voice/narrate.py \
+            --text-file voice/roteiro-treino-livre.txt \
+            --reference-url-env CARLOS_VOICE_REFERENCE_URL \
+            --output out/Treino_Livre_Carlos_Jr.wav \
+            --device cpu
+          python -m pip freeze > out/dependencies.txt
+      - name: Upload completed narration for 24 hours
+        if: success() && steps.reference.outputs.ready == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Treino-Livre-Carlos-Jr-${{ github.run_id }}
+          path: |
+            out/Treino_Livre_Carlos_Jr.wav
+            out/Treino_Livre_Carlos_Jr.json
+            out/dependencies.txt
+          if-no-files-found: error
+          retention-days: 1
