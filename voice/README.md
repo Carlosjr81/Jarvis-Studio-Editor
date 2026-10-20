@@ -27,12 +27,13 @@ conversa não oferece escrita na API de secrets do GitHub.
 
 ## Execução da branch de recuperação (autorizada pelo titular)
 
-O workflow roda os testes e valida a importação do motor em pull requests
-e em pushes na main. A etapa de narração só roda quando o secret existe, após os testes.
+O workflow roda somente por acionamento manual na aba Actions.
+Primeiro executa os testes e valida a importação do motor.
+A etapa de narração só roda quando o secret existe, após os testes.
 Sem secret, o resumo registra "Referência pendente", sem gerar áudio.
 
-Após cadastrar o secret, um novo commit em voice/ ou no workflow dispara
-a geração. A aba Actions mostra o progresso e disponibiliza o artefato
+Após cadastrar o secret, abra Actions > Jarvis - Voz Carlos Jr > Run workflow.
+A geração exige esse acionamento explícito em cada execução. A aba Actions mostra o progresso e disponibiliza o artefato
 Treino-Livre-Carlos-Jr-<run_id> após conclusão.
 
 O arquivo de referência não é versionado, enviado a artefatos nem cacheado.
@@ -81,7 +82,7 @@ https://docs.github.com/en/actions/reference/runners/github-hosted-runners
 - Artefato (retenção de 24 horas): https://github.com/Carlosjr81/Jarvis-Studio-Editor/actions/runs/39472323151/artifacts/12288806792
 - Pesos fixados no snapshot: 32279effe8c19989596f05d353d1447f51d9e915
 - O secret é persistente no repositório; a referência não está nos commits.
-- O fluxo pode rodar manualmente pela aba Actions ou por alterações em voice/ na main.
+- O fluxo só roda manualmente pela aba Actions; commits não iniciam novas gerações.
 
 MoneyPrinterTurbo aceita narração externa. Depois de ouvir o WAV, use o
 argumento --custom-audio-file com seu caminho real em cada execução: esse
