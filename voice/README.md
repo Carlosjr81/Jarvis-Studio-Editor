@@ -6,7 +6,7 @@ Os dez testes e a importação do VoxCPM passaram na execução 39471312713.
 A execução 39472323151 concluiu a síntese em 2026-10-20, usando a referência
 privada cadastrada pelo titular: WAV mono PCM16, 48000 Hz, 19,24 segundos.
 A saída passou nas verificações de duração e presença de áudio.
-A semelhança vocal e a fidelidade do texto ainda precisam ser ouvidas.
+O titular aprovou o áudio em 2026-10-20, após receber o resultado.
 Só um WAV gerado, ouvido e aprovado confirma o resultado.
 
 ## Referência privada
@@ -27,8 +27,8 @@ conversa não oferece escrita na API de secrets do GitHub.
 
 ## Execução da branch de recuperação (autorizada pelo titular)
 
-O workflow roda os testes e valida a importação do motor em pushes nesta
-branch. A etapa de narração só roda quando o secret existe, após os testes.
+O workflow roda os testes e valida a importação do motor em pull requests
+e em pushes na main. A etapa de narração só roda quando o secret existe, após os testes.
 Sem secret, o resumo registra "Referência pendente", sem gerar áudio.
 
 Após cadastrar o secret, um novo commit em voice/ ou no workflow dispara
@@ -81,7 +81,7 @@ https://docs.github.com/en/actions/reference/runners/github-hosted-runners
 - Artefato (retenção de 24 horas): https://github.com/Carlosjr81/Jarvis-Studio-Editor/actions/runs/39472323151/artifacts/12288806792
 - Pesos fixados no snapshot: 32279effe8c19989596f05d353d1447f51d9e915
 - O secret é persistente no repositório; a referência não está nos commits.
-- O fluxo está nesta branch de recuperação, ainda em PR rascunho.
+- O fluxo pode rodar manualmente pela aba Actions ou por alterações em voice/ na main.
 
 MoneyPrinterTurbo aceita narração externa. Depois de ouvir o WAV, use o
 argumento --custom-audio-file com seu caminho real em cada execução: esse
