@@ -1,10 +1,5 @@
 name: Jarvis - Voz Carlos Jr
 on:
-  push:
-    branches: [codex/restore-local-voice-20261020]
-    paths: ['voice/**', '.github/workflows/carlos-voice.yml']
-  pull_request:
-    paths: ['voice/**', '.github/workflows/carlos-voice.yml']
   workflow_dispatch:
 permissions:
   contents: read
