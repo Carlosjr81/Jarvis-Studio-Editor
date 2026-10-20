@@ -188,7 +188,7 @@ def main():
     group.add_argument("--reference-url-env")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--device", choices=["cpu", "cuda", "mps"], default="cpu")
-    parser.add_argument("--model-revision", default="main")
+    parser.add_argument("--model-revision", default="32279effe8c19989596f05d353d1447f51d9e915")
     parser.add_argument("--check-reference-only", action="store_true")
     args = parser.parse_args()
     try:
