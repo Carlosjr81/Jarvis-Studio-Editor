@@ -3,7 +3,8 @@
 Este diretório adiciona uma rota de síntese VoxCPM2 à branch de recuperação.
 Não modifica o editor publicado, o Fake Call nem o relay Render.
 Os dez testes e a importação do VoxCPM passaram na execução 39471312713.
-A síntese ainda aguarda o secret e não foi validada com a voz do usuário.
+O titular informou o cadastro do secret. Síntese solicitada em 2026-10-20;
+a disponibilidade da referência e o resultado ainda serão verificados.
 Só um WAV gerado, ouvido e aprovado confirma o resultado.
 
 ## Referência privada
