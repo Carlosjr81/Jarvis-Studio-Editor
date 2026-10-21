@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jarvis Instagram 2"
+  short_description: "Criação, edição e gestão de conteúdo para Instagram"
+  default_prompt: "Use $jarvis-instagram-2 para criar meu próximo vídeo seguindo as referências aprovadas."
