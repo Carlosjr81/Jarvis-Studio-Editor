@@ -1,12 +1,49 @@
 # Narração Carlos Jr — recuperação verificável
 
+## Referência vigente para novos vídeos — 20/10/2026
+
+O titular enviou nove novos vídeos (340544, 340551, 340553, 340555,
+340557, 340559, 340561, 340562 e 340580) e pediu que servissem de base
+para sua voz em todos os vídeos futuros. O clone anterior foi rejeitado
+pelo titular por falta de semelhança. Não usá-lo como substituto silencioso.
+
+O banco privado `Carlos_Jr_Voz_2026-10-20.zip` contém os áudios originais,
+onze trechos de fala, transcrições automáticas e `perfil_voz.json`.
+Recuperar esse arquivo privado pelo conector ChatGPT Library; não colocar
+amostras, identificadores privados ou URLs assinados neste repositório público.
+O perfil distingue preparação, síntese e aprovação da semelhança vocal.
+As transcrições automáticas ainda exigem conferência por escuta.
+
+Usar a referência principal do banco com áudio e transcrição:
+
+    python voice/narrate.py --text-file roteiro.txt \
+      --reference /caminho/privado/Carlos_Jr_Referencia_Principal.wav \
+      --reference-text-file /caminho/privado/Carlos_Jr_Referencia_Principal.txt \
+      --output /caminho/privado/narracao.wav --device cpu
+
+Com `--reference-text-file`, o motor recebe a mesma referência como
+`reference_wav_path` e `prompt_wav_path`, mais seu `prompt_text`.
+Registrar hashes da referência e da transcrição no resultado. Sem o argumento,
+a rota antiga de clonagem só por áudio permanece disponível por compatibilidade.
+Preservar os nove áudios para selecionar outra tomada quando necessário;
+não concatenar as pausas, tomadas repetidas e ruído como uma referência única.
+
+O workflow atual continua lendo o secret anterior; esta alteração não o
+substitui. Não iniciar uma geração por esse workflow afirmando usar as
+novas amostras sem atualizar/verificar sua referência privada primeiro.
+A habilidade pessoal instalada também precisa apontar para o novo banco:
+o diretório `/root/.codex/skills/remote-skills` estava ausente nesta sessão,
+logo não houve salvamento da habilidade. A política e o suporte a áudio+texto
+ficam persistidos neste projeto, sem declarar integração global concluída.
+
 Este diretório adiciona uma rota de síntese VoxCPM2 à branch de recuperação.
 Não modifica o editor publicado, o Fake Call nem o relay Render.
 Os dez testes e a importação do VoxCPM passaram na execução 39471312713.
 A execução 39472323151 concluiu a síntese em 2026-10-20, usando a referência
 privada cadastrada pelo titular: WAV mono PCM16, 48000 Hz, 19,24 segundos.
 A saída passou nas verificações de duração e presença de áudio.
-O titular aprovou o áudio em 2026-10-20, após receber o resultado.
+O registro anterior de aprovação foi superado pelo relato posterior do titular
+de que a voz estava estranha e não se parecia com sua voz.
 Só um WAV gerado, ouvido e aprovado confirma o resultado.
 
 ## Referência privada

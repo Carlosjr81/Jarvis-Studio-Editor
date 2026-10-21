@@ -19,6 +19,15 @@ import wave
 SOURCE_COMMIT = "cce58a5b59303c9bd63d12f23afe6a49a4a80c59"
 MAX_REFERENCE_BYTES = 20 * 1024 * 1024
 
+def reference_transcript(path):
+    """Read the matching reference transcript without guessing missing words."""
+    if path is None:
+        return None
+    text = path.read_text(encoding="utf-8").strip()
+    if not text or len(text) > 5000:
+        raise ValueError("A transcrição da referência deve conter de 1 a 5000 caracteres.")
+    return text
+
 def chunks(text, limit=200):
     text = re.sub(r"\s+", " ", text).strip()
     if not text:
@@ -122,6 +131,7 @@ def generate(args):
             download_reference(args.reference_url_env, source)
         reference = private_dir / "reference.wav"
         ref_info = prepare_reference(source, reference)
+        prompt_text = reference_transcript(args.reference_text_file)
         if args.check_reference_only:
             print(json.dumps({"reference_valid": True, **ref_info}))
             return
@@ -138,10 +148,13 @@ def generate(args):
             device=args.device, local_files_only=True)
         rate = int(model.tts_model.sample_rate)
         audio, timing, cursor = [], [], 0
+        cloning_options = {"reference_wav_path": str(reference)}
+        if prompt_text is not None:
+            cloning_options.update(prompt_wav_path=str(reference), prompt_text=prompt_text)
         for index, part in enumerate(parts):
             print(f"Gerando trecho {index + 1}/{len(parts)}.", flush=True)
             wav = np.asarray(model.generate(
-                text=part, reference_wav_path=str(reference), seed=42 + index,
+                text=part, **cloning_options, seed=42 + index,
                 cfg_value=2.0, inference_timesteps=10, max_len=1024,
                 retry_badcase=True, retry_badcase_max_times=1), dtype=np.float32).reshape(-1)
             if not wav.size or not np.isfinite(wav).all():
@@ -171,6 +184,9 @@ def generate(args):
             "voice": "Carlos Jr - referencia autorizada",
             "engine": "VoxCPM2", "source_commit": SOURCE_COMMIT,
             "model_snapshot": Path(model_path).name, "device": args.device,
+            "cloning_mode": "audio_and_transcript" if prompt_text is not None else "audio_only",
+            "reference_sha256": hashlib.sha256(reference.read_bytes()).hexdigest(),
+            "reference_transcript_sha256": hashlib.sha256(prompt_text.encode("utf-8")).hexdigest() if prompt_text is not None else None,
             "script_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
             "audio_sha256": hashlib.sha256(candidate.read_bytes()).hexdigest(),
             "metrics": metrics, "segments": timing,
@@ -186,6 +202,8 @@ def main():
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--reference", type=Path)
     group.add_argument("--reference-url-env")
+    parser.add_argument("--reference-text-file", type=Path,
+                        help="Transcrição correspondente ao mesmo trecho de referência; ativa clonagem por áudio e texto.")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--device", choices=["cpu", "cuda", "mps"], default="cpu")
     parser.add_argument("--model-revision", default="32279effe8c19989596f05d353d1447f51d9e915")
