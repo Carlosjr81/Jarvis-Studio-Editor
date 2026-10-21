@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jarvis LTX Mobile 2"
+  short_description: "Preparar e acompanhar vídeos LTX pelo celular"
+  default_prompt: "Use $jarvis-ltx-mobile-2 para executar minha próxima tarefa com as referências aprovadas."

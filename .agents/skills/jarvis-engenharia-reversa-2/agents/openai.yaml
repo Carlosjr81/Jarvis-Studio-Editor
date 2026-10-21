@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jarvis Engenharia Reversa 2"
+  short_description: "Investigar funcionalidades e construir alternativas"
+  default_prompt: "Use $jarvis-engenharia-reversa-2 para executar minha próxima tarefa com as referências aprovadas."

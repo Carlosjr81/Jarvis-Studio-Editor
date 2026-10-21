@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jarvis Studio Editor 2"
+  short_description: "Editar vídeos com camadas, legendas e áudio"
+  default_prompt: "Use $jarvis-studio-editor-2 para executar minha próxima tarefa com as referências aprovadas."

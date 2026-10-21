@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "skills": [
+    "jarvis-clone-voz-2",
+    "jarvis-diagnostico-2",
+    "jarvis-engenharia-reversa-2",
+    "jarvis-instagram-2",
+    "jarvis-lab-2",
+    "jarvis-ltx-mobile-2",
+    "jarvis-studio-editor-2"
+  ],
+  "files": [
+    {
+      "path": "jarvis-clone-voz-2/SKILL.md",
+      "sha256": "4005187e4fa463986b10b6610b841c29b556a16714063ea7bd627c3eef72f3ba",
+      "bytes": 2044
+    },
+    {
+      "path": "jarvis-clone-voz-2/agents/openai.yaml",
+      "sha256": "8205094ea9cf40e9afaaf88c4ad83ca81f4ab0efeb7645efa5ab59cc2e37d897",
+      "bytes": 229
+    },
+    {
+      "path": "jarvis-clone-voz-2/references/approved-flow.md",
+      "sha256": "b8ce8ab3a1b89400d6b9a834f9c996a7abeea2ccc863e00675f5b0c479c63e66",
+      "bytes": 5027
+    },
+    {
+      "path": "jarvis-clone-voz-2/references/operation.md",
+      "sha256": "c8f839599154684b199a37207035b51f705cff5ed827a064e17528d6d73415a2",
+      "bytes": 1429
+    },
+    {
+      "path": "jarvis-clone-voz-2/references/origin.md",
+      "sha256": "8e356148aaf8b01c68efcd0e3644c23a8100734117a1908ed09a326ec9445452",
+      "bytes": 512
+    },
+    {
+      "path": "jarvis-clone-voz-2/scripts/narrate_approved.py",
+      "sha256": "0d7ae6ee3b137ec79698400e791bf7101cb9a6fcde779cc213125116cd356c6a",
+      "bytes": 4475
+    },
+    {
+      "path": "jarvis-clone-voz-2/scripts/preflight.py",
+      "sha256": "ccbeae54b54f558deb0418ba3f90c36849f5c93338c2071f409d1aac809b0c63",
+      "bytes": 2775
+    },
+    {
+      "path": "jarvis-diagnostico-2/SKILL.md",
+      "sha256": "d807ba80758526c4e98ca3fcf0671fe8f92a8f9a028d7757e9c67a7642b36265",
+      "bytes": 2634
+    },
+    {
+      "path": "jarvis-diagnostico-2/agents/openai.yaml",
+      "sha256": "30e0347666bbba9140db1030a87af05c7147be71246a6eb51a152c969f3300cb",
+      "bytes": 235
+    },
+    {
+      "path": "jarvis-diagnostico-2/references/operation.md",
+      "sha256": "c8f839599154684b199a37207035b51f705cff5ed827a064e17528d6d73415a2",
+      "bytes": 1429
+    },
+    {
+      "path": "jarvis-diagnostico-2/references/origin.md",
+      "sha256": "5367209b48f95d102aebe153d7a90338895a387199bebfda7e2e5daaaa1b7c4e",
+      "bytes": 646
+    },
+    {
+      "path": "jarvis-diagnostico-2/references/protocols.md",
+      "sha256": "e5f3f7b6bedb2de3076d9f425b44859cc46bd6467d3ed840b5f0a26bd3c59e99",
+      "bytes": 2095
+    },
+    {
+      "path": "jarvis-engenharia-reversa-2/SKILL.md",
+      "sha256": "acd2d0fbbcc02c5eac53141d69379dba3b02ba3c2f562b9f1d5d1ef109df3ff8",
+      "bytes": 2509
+    },
+    {
+      "path": "jarvis-engenharia-reversa-2/agents/openai.yaml",
+      "sha256": "319e09838f8b5ac9c54ae7ff9b167e9a17007ab1361dd05df92403e1137a9d8f",
+      "bytes": 252
+    },
+    {
+      "path": "jarvis-engenharia-reversa-2/references/investigation.md",
+      "sha256": "1d7ff7559f346375c87df9e56737403bfcd14454185283866329440deca27a86",
+      "bytes": 1636
+    },
+    {
+      "path": "jarvis-engenharia-reversa-2/references/operation.md",
+      "sha256": "c8f839599154684b199a37207035b51f705cff5ed827a064e17528d6d73415a2",
+      "bytes": 1429
+    },
+    {
+      "path": "jarvis-engenharia-reversa-2/references/origin.md",
+      "sha256": "3a40ae0ae3240d722c6d95f33db12ce033353df2cccdcc320feda5471bb2618a",
+      "bytes": 501
+    },
+    {
+      "path": "jarvis-engenharia-reversa-2/scripts/source_audit.py",
+      "sha256": "768544bcb796fd96a4e0208e07b053be87055c3ae8d95417d52cd1c234c95cb3",
+      "bytes": 3476
+    },
+    {
+      "path": "jarvis-instagram-2/SKILL.md",
+      "sha256": "eb3eabeb58d867d9dbc2f99a9c0e4d1f883b0dd5394044829afa7abea093868c",
+      "bytes": 6131
+    },
+    {
+      "path": "jarvis-instagram-2/agents/openai.yaml",
+      "sha256": "db5ded72b83af8ca4e17a94250a69089b65b2394823a76da342ee7473ed3ef47",
+      "bytes": 240
+    },
+    {
+      "path": "jarvis-instagram-2/references/analytics.md",
+      "sha256": "d86cb0cb9b294f879ff16662c6509c492900ae1d54926ec19e63e89ac5b1612b",
+      "bytes": 1204
+    },
+    {
+      "path": "jarvis-instagram-2/references/chronology.md",
+      "sha256": "99f7ef2bf9b57e95621972d6eba02c734ddc1d99e656c51931ded63b4b4af489",
+      "bytes": 4486
+    },
+    {
+      "path": "jarvis-instagram-2/references/content.md",
+      "sha256": "a8f5a3aabafaf755c06de0c38bfa35138065c5c0d8c15d38ed3df007d7f65f6f",
+      "bytes": 1610
+    },
+    {
+      "path": "jarvis-instagram-2/references/gavioes.md",
+      "sha256": "d6f9bdef05ee377d996039f0e4eaa65c8f682940afc2debcc04b0847986493fd",
+      "bytes": 2583
+    },
+    {
+      "path": "jarvis-instagram-2/references/master-spec.md",
+      "sha256": "fdb10da3cd3de3399796ad12794ecbc21945669640ee30f92f165e48cc03e278",
+      "bytes": 23845
+    },
+    {
+      "path": "jarvis-instagram-2/references/module-analytics-growth.md",
+      "sha256": "dab32dad621c3e5eb40c446a27e251613bb9ef0c184a466920ceb26ddb52aac4",
+      "bytes": 910
+    },
+    {
+      "path": "jarvis-instagram-2/references/module-community-operations.md",
+      "sha256": "b8e122c83eb1061f17e282593c8106da218658ebb8c84208ec8012de7a85c70c",
+      "bytes": 744
+    },
+    {
+      "path": "jarvis-instagram-2/references/module-content-studio.md",
+      "sha256": "0f53e49d92255a5dc65d562c1f771303e6eefd7392aa3c1a102fe4d2219db5dd",
+      "bytes": 1048
+    },
+    {
+      "path": "jarvis-instagram-2/references/module-jarvis-core.md",
+      "sha256": "b3df9a9dc56b7e83b39903adbb0f971a6f7d43ac115c339b2b73a32162310f23",
+      "bytes": 2578
+    },
+    {
+      "path": "jarvis-instagram-2/references/module-publishing-automation.md",
+      "sha256": "464beb62f31b41646530b172c0f398b98c400c031ec661ac180ab219130d2d3c",
+      "bytes": 887
+    },
+    {
+      "path": "jarvis-instagram-2/references/module-video-production.md",
+      "sha256": "b84910032d336c9b45a4e5c89f170fc4197acb3a9450196059a0f5b14f4d9038",
+      "bytes": 1031
+    },
+    {
+      "path": "jarvis-instagram-2/references/operations.md",
+      "sha256": "d8ad3a66790c6018d48b21647da53351df9933c1d788c62639c8ab04e8226cbc",
+      "bytes": 2677
+    },
+    {
+      "path": "jarvis-instagram-2/references/recovery.md",
+      "sha256": "c33fc0e52535f1d1291516f1fba7aca9138a7dfb3c3f12ac303773a246a7ddc3",
+      "bytes": 1491
+    },
+    {
+      "path": "jarvis-instagram-2/references/suite-2.md",
+      "sha256": "3acb3fe78aeb0d7989eb122658d9ac5cfc863904aa654cda606a94db0c368b6d",
+      "bytes": 1295
+    },
+    {
+      "path": "jarvis-instagram-2/references/treino-livre.md",
+      "sha256": "cd3cc6239e6b01f016ab8ef7156107cdf9205835ccf5658269099b1c3e24a74d",
+      "bytes": 1827
+    },
+    {
+      "path": "jarvis-instagram-2/references/video.md",
+      "sha256": "fbf3939250e08b68984fe75a64a285f68e6c9b1bdffd401f646723aa59361a9a",
+      "bytes": 2664
+    },
+    {
+      "path": "jarvis-instagram-2/references/voice-runtime.md",
+      "sha256": "6a7c369376007ee03ea4e751ce9b4b6f776270cf78e48e629c6ad7ea39ad3b2f",
+      "bytes": 5145
+    },
+    {
+      "path": "jarvis-instagram-2/references/voice.md",
+      "sha256": "c0059c3426b7a510b3daa8f8efc59fb14b5a0f2db57e268839d1624854d58e61",
+      "bytes": 2214
+    },
+    {
+      "path": "jarvis-instagram-2/scripts/media_qa.py",
+      "sha256": "2449ab1ee197375cf9d604114a34c62b617406c620d5f22d9ce08d037e996308",
+      "bytes": 1589
+    },
+    {
+      "path": "jarvis-instagram-2/scripts/narrate_approved.py",
+      "sha256": "0d7ae6ee3b137ec79698400e791bf7101cb9a6fcde779cc213125116cd356c6a",
+      "bytes": 4475
+    },
+    {
+      "path": "jarvis-instagram-2/scripts/preflight.py",
+      "sha256": "ccbeae54b54f558deb0418ba3f90c36849f5c93338c2071f409d1aac809b0c63",
+      "bytes": 2775
+    },
+    {
+      "path": "jarvis-instagram-2/scripts/repair_suite.py",
+      "sha256": "3f8ea178dc18b8026ed92cbb405dadea4d45bb1b7c4b661fb28e9349882e596f",
+      "bytes": 3248
+    },
+    {
+      "path": "jarvis-lab-2/SKILL.md",
+      "sha256": "061c4070e2e29eb5b1a20fa67a220667693c5d8e0873db205895b07edd6b0d41",
+      "bytes": 1773
+    },
+    {
+      "path": "jarvis-lab-2/agents/openai.yaml",
+      "sha256": "356a2788652a65bee8625a9d0e201b55a3f21596f167ccd75cf121db5bfc7f0f",
+      "bytes": 217
+    },
+    {
+      "path": "jarvis-lab-2/references/baseline.md",
+      "sha256": "0a6503163c3415fc1f586f62033c48af8ab18d12cf31b68b1e6c773c8f12dbd8",
+      "bytes": 2237
+    },
+    {
+      "path": "jarvis-lab-2/references/method.md",
+      "sha256": "391722733352de48fe23e5e23c62a29f1bbdd47a8ad4b59e46d26e736dbd023f",
+      "bytes": 841
+    },
+    {
+      "path": "jarvis-lab-2/references/operation.md",
+      "sha256": "c8f839599154684b199a37207035b51f705cff5ed827a064e17528d6d73415a2",
+      "bytes": 1429
+    },
+    {
+      "path": "jarvis-lab-2/references/origin.md",
+      "sha256": "d488bd64c8c83e8fb75f3535c930f1b153876ce03a8f7f2b07ebad3d0fe748cc",
+      "bytes": 528
+    },
+    {
+      "path": "jarvis-ltx-mobile-2/SKILL.md",
+      "sha256": "68e2689754b8048c11d08fff63530c48225bab7d87b40def8f055858e00fc783",
+      "bytes": 1864
+    },
+    {
+      "path": "jarvis-ltx-mobile-2/agents/openai.yaml",
+      "sha256": "d9f53fe2b10084bf17ed6fc27c35ed16c70d0ba41ae761803570e870c59da47a",
+      "bytes": 231
+    },
+    {
+      "path": "jarvis-ltx-mobile-2/references/ltx-workflow.md",
+      "sha256": "659344f40b07b7156a5d6f3d93e2b618051a00e85fe1340441c29bb5919e7a03",
+      "bytes": 1094
+    },
+    {
+      "path": "jarvis-ltx-mobile-2/references/operation.md",
+      "sha256": "c8f839599154684b199a37207035b51f705cff5ed827a064e17528d6d73415a2",
+      "bytes": 1429
+    },
+    {
+      "path": "jarvis-ltx-mobile-2/references/origin.md",
+      "sha256": "0e6faf2857f68c857885ed6fdae90f1ff93eb8323da58f684d3b4f015dac26e6",
+      "bytes": 520
+    },
+    {
+      "path": "jarvis-studio-editor-2/SKILL.md",
+      "sha256": "ad44c9af0a5abd1be2f0fab6a0c907f2006ae8afe13a4987ef736fe4d1a54a0d",
+      "bytes": 2197
+    },
+    {
+      "path": "jarvis-studio-editor-2/agents/openai.yaml",
+      "sha256": "8c21857c2b70e5eea0e439ddca67276c72265bb1e1f94437c2c61668fdce097c",
+      "bytes": 236
+    },
+    {
+      "path": "jarvis-studio-editor-2/references/editing.md",
+      "sha256": "0c2af2f716caebe4e5d64618ef5377536c2e33fd7ea574c63739a048fcd948f7",
+      "bytes": 1651
+    },
+    {
+      "path": "jarvis-studio-editor-2/references/operation.md",
+      "sha256": "c8f839599154684b199a37207035b51f705cff5ed827a064e17528d6d73415a2",
+      "bytes": 1429
+    },
+    {
+      "path": "jarvis-studio-editor-2/references/origin.md",
+      "sha256": "9cbfa19a84ac40b00329496b928e9e28889d91defcb819147e7611417bb88ef8",
+      "bytes": 707
+    },
+    {
+      "path": "jarvis-studio-editor-2/references/video-qa.md",
+      "sha256": "fbf3939250e08b68984fe75a64a285f68e6c9b1bdffd401f646723aa59361a9a",
+      "bytes": 2664
+    },
+    {
+      "path": "jarvis-studio-editor-2/scripts/media_qa.py",
+      "sha256": "2449ab1ee197375cf9d604114a34c62b617406c620d5f22d9ce08d037e996308",
+      "bytes": 1589
+    }
+  ]
+}

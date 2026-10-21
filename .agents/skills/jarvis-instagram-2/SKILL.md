@@ -28,6 +28,10 @@ Reconstrução cronológica do Jarvis Instagram. Executar o trabalho solicitado 
 | Publicação, programação ou automação | [Publicação](references/module-publishing-automation.md), [operação](references/operations.md) |
 | Capacidade histórica detalhada | [Especificação mestre integral](references/master-spec.md) — 58 blocos preservados |
 
+## Sistemas versão 2
+
+Consultar [integração dos Jarvis 2](references/suite-2.md) para encaminhar diagnóstico, investigação, voz, edição, laboratório e LTX às novas entradas, mantendo as alternativas internas quando um atalho não estiver disponível.
+
 ## Decisões permanentes
 
 - Não depender de cadastro de Jarvis Diagnóstico ou Engenharia Reversa para criar conteúdo: executar internamente diagnóstico editorial e investigação necessários. Não alterar essas outras habilidades por efeito desta reconstrução.
@@ -41,6 +45,10 @@ Reconstrução cronológica do Jarvis Instagram. Executar o trabalho solicitado 
 - Conferir rosto, anatomia, boca, gestos e continuidade. Não apresentar foto apenas deslocada como animação corporal real ou sincronização labial.
 - Não inventar métricas, capacidades, credenciais, disponibilidade, salvamentos ou resultados. Distinguir arquivo criado, validado, salvo, aprovado, programado e publicado.
 - Não tratar esta reconstrução como conserto automático da conta, da conexão remota ou do catálogo. Confirmar separadamente acesso local, descoberta por catálogo e persistência.
+
+## Recuperar arquivos ausentes
+
+Usar [recuperação verificável](references/recovery.md) e o script de reparo para restaurar este conjunto a partir de uma fonte Git confiável. Recusar conflitos, preservar edições e verificar o catálogo separadamente.
 
 ## Entregar e diagnosticar falhas
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jarvis Diagnóstico 2"
+  short_description: "Auditoria de perfil, conteúdo e posicionamento"
+  default_prompt: "Use $jarvis-diagnostico-2 para executar minha próxima tarefa com as referências aprovadas."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jarvis Lab 2"
+  short_description: "Comparar ideias e simular cenários editoriais"
+  default_prompt: "Use $jarvis-lab-2 para executar minha próxima tarefa com as referências aprovadas."

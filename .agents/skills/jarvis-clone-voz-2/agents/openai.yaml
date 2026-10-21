@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jarvis Clone Voz 2"
+  short_description: "Narração local com a voz aprovada do titular"
+  default_prompt: "Use $jarvis-clone-voz-2 para executar minha próxima tarefa com as referências aprovadas."
