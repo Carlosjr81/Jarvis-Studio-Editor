@@ -8,7 +8,7 @@ import wave
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).parent))
-from narrate import chunks, download_reference, inspect_wav, prepare_reference
+from narrate import chunks, download_reference, inspect_wav, prepare_reference, reference_transcript
 
 class VoiceChecks(unittest.TestCase):
     def setUp(self):
@@ -32,6 +32,22 @@ class VoiceChecks(unittest.TestCase):
         info = inspect_wav(self.path)
         self.assertEqual(info["duration_seconds"], 1)
         self.assertGreater(info["rms"], .01)
+
+    def test_reference_transcript_preserves_spoken_text(self):
+        path = Path(self.tmp.name) / "reference.txt"
+        path.write_text("  Segundo andar, peso livre.\n", encoding="utf-8")
+        self.assertEqual(reference_transcript(path), "Segundo andar, peso livre.")
+        self.assertIsNone(reference_transcript(None))
+
+    def test_invalid_reference_transcript_rejected(self):
+        path = Path(self.tmp.name) / "reference.txt"
+        for content in ["  ", "x" * 5001]:
+            path.write_text(content, encoding="utf-8")
+            with self.assertRaises(ValueError):
+                reference_transcript(path)
+        path.unlink()
+        with self.assertRaises(FileNotFoundError):
+            reference_transcript(path)
 
     def test_silence_rejected(self):
         self.wav(silence=True)

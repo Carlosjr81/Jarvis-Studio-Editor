@@ -1,0 +1,4 @@
+interface:
+  display_name: "Jarvis Clone Voz"
+  short_description: "Narrar vídeos com sua voz previamente aprovada."
+  default_prompt: "Use $jarvis-clone-voz para narrar este roteiro com minha voz aprovada, sem gastar créditos."
