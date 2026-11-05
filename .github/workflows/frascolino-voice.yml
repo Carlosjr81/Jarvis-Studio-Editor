@@ -1,0 +1,114 @@
+name: Jarvis - Frascolino PET (isolado)
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/frascolino-voice.yml'
+      - 'voice/frascolino/**'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Validar instalação ou gerar perfil exclusivo com referência privada'
+        type: choice
+        required: true
+        default: validate
+        options:
+          - validate
+          - clone
+permissions:
+  contents: read
+concurrency:
+  group: frascolino-voice-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  voice:
+    if: github.repository == 'Carlosjr81/Jarvis-Studio-Editor' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      PIP_NO_CACHE_DIR: '1'
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      OMP_NUM_THREADS: '4'
+      MKL_NUM_THREADS: '4'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.11'
+      - name: Check Frascolino-only secrets before clone
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'clone'
+        env:
+          FRASCOLINO_REFERENCE_URL: ${{ secrets.FRASCOLINO_REFERENCE_URL }}
+          FRASCOLINO_ARCHIVE_PASSWORD: ${{ secrets.FRASCOLINO_ARCHIVE_PASSWORD }}
+        run: |
+          python - <<'PY'
+          import os
+          if not os.environ.get("FRASCOLINO_REFERENCE_URL", "").strip():
+              raise SystemExit("Configure o secret FRASCOLINO_REFERENCE_URL. Nenhuma voz foi gerada.")
+          if len(os.environ.get("FRASCOLINO_ARCHIVE_PASSWORD", "")) < 20:
+              raise SystemExit("Configure FRASCOLINO_ARCHIVE_PASSWORD com pelo menos 20 caracteres.")
+          PY
+      - name: Confirm personal voice files are unchanged
+        run: |
+          python - <<'PY'
+          import subprocess
+          expected = {
+              ".github/workflows/carlos-voice.yml": "2d48c2c85b4df3db7a869ea247345a57bb988e63",
+              "voice/narrate.py": "72b0c3ffc93168d185e87987635ecedf523f1665",
+              "voice/constraints.txt": "0489e34b8c430719aaffb96eeec7b934a6f81e58",
+              "voice/test_narrate.py": "4c181e5fb03a6eacc7a2bf32750cb6c7de508264",
+          }
+          for path, wanted in expected.items():
+              actual = subprocess.check_output(["git", "hash-object", path], text=True).strip()
+              if actual != wanted:
+                  raise SystemExit("O perfil pessoal mudou desde a implementação; revise antes de continuar: " + path)
+          print("Arquivos pessoais preservados; nenhuma credencial pessoal foi acessada.")
+          PY
+      - name: Install archive validation dependencies and run tests
+        run: |
+          python -m pip install pyzipper==0.3.6
+          python -m py_compile voice/frascolino/frascolino.py voice/frascolino/test_frascolino.py
+          python -m unittest discover -s voice/frascolino -p 'test_*.py' -v
+          python -m unittest discover -s voice -p 'test_*.py' -v
+      - name: Install pinned CPU inference dependencies
+        run: |
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.8.0 torchaudio==2.8.0
+          python -m pip install -c voice/frascolino/constraints.txt 'voxcpm @ git+https://github.com/OpenBMB/VoxCPM.git@cce58a5b59303c9bd63d12f23afe6a49a4a80c59'
+          python -m pip check
+      - name: Load fixed VoxCPM2 model in CPU without accessing any voice
+        run: python voice/frascolino/frascolino.py preflight
+      - name: Install audio decoder
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'clone'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y ffmpeg libsndfile1
+      - name: Generate exclusive Frascolino profile and encrypt reference and sample
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'clone'
+        env:
+          FRASCOLINO_REFERENCE_URL: ${{ secrets.FRASCOLINO_REFERENCE_URL }}
+          FRASCOLINO_ARCHIVE_PASSWORD: ${{ secrets.FRASCOLINO_ARCHIVE_PASSWORD }}
+        run: |
+          python voice/frascolino/frascolino.py generate \
+            --archive "$RUNNER_TEMP/frascolino-delivery/Frascolino_PET_Globalpack_AES256.zip"
+      - name: Upload only encrypted completed package
+        if: success() && github.event_name == 'workflow_dispatch' && inputs.mode == 'clone'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: Frascolino-PET-encrypted-${{ github.run_id }}
+          path: ${{ runner.temp }}/frascolino-delivery/Frascolino_PET_Globalpack_AES256.zip
+          if-no-files-found: error
+          retention-days: 1
+      - name: Record the actual result
+        if: success()
+        env:
+          MODE: ${{ inputs.mode }}
+        run: |
+          if [ "$MODE" = "clone" ]; then
+            echo "Perfil Frascolino e amostra gerados; pacote AES-256 disponível por um dia. Semelhança e texto aguardam revisão auditiva." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Testes e carregamento do VoxCPM2 em CPU concluídos. Nenhuma referência foi acessada; nenhuma voz foi sintetizada." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Remove transient delivery package
+        if: always()
+        run: rm -f "$RUNNER_TEMP/frascolino-delivery/Frascolino_PET_Globalpack_AES256.zip"
